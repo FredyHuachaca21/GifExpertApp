@@ -1,34 +1,33 @@
 import { useState } from "react"
 
 import { AddCategory } from "./components/AddCategory"
+import { GifGrid } from "./components/GifGrid"
 
 export const GifApp = () => {
 
   const [categories, setCategories] = useState(['One punch', 'Dragon ball'])
-  console.log(categories)
 
-  const onAddCategory = ( ) => {
-    // setCategories([...categories, 'hola'])
-    setCategories([...categories, 'hola'])
-    
+  const onAddCategory = ( newCategory ) => {
+    // Si la categoría ya existe, no la agrega. Tambien valida para key duplicadas
+    if(categories.includes(newCategory)) return; 
+    setCategories( prevCategories => [newCategory, ...prevCategories])
   }
 
   return (
     <>
-    {/* Título */}
     <h1>Gif App</h1>
 
-    {/* Input categoria */}
-    <AddCategory/>
+    <AddCategory 
+    onNewCategory={value => onAddCategory(value)}
+    />
 
     <button onClick={onAddCategory}>Agregar</button>
-    
-    {/* Lista de categorias */}
-    <ol>
-      {categories.map( x => {
-        return <li key={x}>{x}</li>
-      })}
-    </ol>
+  
+      {categories.map( category => (
+        <GifGrid 
+        key={category}
+        category={category}/>
+      ))}
 
     </>
   )

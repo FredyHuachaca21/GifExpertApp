@@ -7,11 +7,7 @@ import './styles.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <>
-    {/* Título */}
     <GifApp />
-    {/* Input */}
-
-    {/*Listado de gifs  */}
 
     </>
   </React.StrictMode>,
