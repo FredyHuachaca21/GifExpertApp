@@ -5,7 +5,7 @@ import { GifGrid } from "./components/GifGrid"
 
 export const GifApp = () => {
 
-  const [categories, setCategories] = useState(['One punch', 'Dragon ball'])
+  const [categories, setCategories] = useState(['One punch'])
 
   const onAddCategory = ( newCategory ) => {
     // Si la categoría ya existe, no la agrega. Tambien valida para key duplicadas
